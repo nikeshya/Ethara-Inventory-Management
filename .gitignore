@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+backend/venv/
+
+# Build outputs
+dist/
+build/
+
+# Environment files (contain secrets)
+.env
+backend/.env
+
+# Database files
+*.db
+*.sqlite
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
