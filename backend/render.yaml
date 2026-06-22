@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: ethara-inventory-api
+    env: docker
+    region: frankfurt
+    plan: free
+    dockerCommand: "alembic upgrade head && python seed.py && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ethara-postgres
+          property: connectionString
+      - key: CORS_ORIGINS
+        value: '["https://ethara-inventory.vercel.app"]'
+      - key: DEBUG
+        value: "False"
+
+databases:
+  - name: ethara-postgres
+    databaseName: inventory_db
+    user: ethara_admin
+    plan: free
+    region: frankfurt
